@@ -34,7 +34,7 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        assistant_response = client.chat.create.completions(
+        assistant_response = client.chat.completions.create(
             model=st.secrets.model, messages=st.session_state.messages)
         full_response = assistant_response.ctypes[0].message.content
         # random.choice(
