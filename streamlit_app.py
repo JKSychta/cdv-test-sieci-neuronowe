@@ -4,8 +4,8 @@ import time
 import openai
 
 
-client = openai.OpenAI(api_key=st.secrets.api_key,
-                       base_url=st.secrets.base_url)
+client = openai.OpenAI(api_key=st.secrets["api_key"],
+                       base_url=st.secrets["base_url"])
 
 st.write("Streamlit loves LLMs! 🤖 [Build your own chat app](https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps) in minutes, then make it powerful by adding images, dataframes, or even input widgets to the chat.")
 
@@ -35,7 +35,7 @@ if prompt := st.chat_input("What is up?"):
         message_placeholder = st.empty()
         full_response = ""
         assistant_response = client.chat.completions.create(
-            model=st.secrets.model, messages=st.session_state.messages)
+            model=st.secrets["model"], messages=st.session_state.messages)
         full_response = assistant_response.choices[0].message.content
         # random.choice(
         #     [
